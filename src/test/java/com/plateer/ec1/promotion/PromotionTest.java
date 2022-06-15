@@ -16,7 +16,7 @@ import java.util.List;
 public class PromotionTest {
 
     @Test
-    @DisplayName("1. 가격할인금액계산 테스트")
+    @DisplayName("1. 가격할인금액 계산 테스트")
     void priceDiscountCalculationTest() {
         //상품 1 설정
         Product product1 = new Product();
@@ -44,12 +44,9 @@ public class PromotionTest {
         requestPromotionVo.setProductList(productList);
         requestPromotionVo.setCouponIssueNo(promotion.getCouponIssueNo());
 
-
-        Calculation calculation = new PriceDiscountCalculation();
         PromotionService promotionService = new PromotionServiceImpl();
         PromotionController promotionController = new PromotionController(promotionService);
-        promotionController.getPriceDiscountApplyData(requestPromotionVo);
-
+        promotionController.getProductCouponApplyData(requestPromotionVo);
     }
 
     @Test
@@ -81,11 +78,9 @@ public class PromotionTest {
         requestPromotionVo.setProductList(productList);
         requestPromotionVo.setCouponIssueNo(promotion.getCouponIssueNo());
 
-        Calculation calculation = new ProductCouponCalculation();
         PromotionService promotionService = new PromotionServiceImpl();
         PromotionController promotionController = new PromotionController(promotionService);
         promotionController.getProductCouponApplyData(requestPromotionVo);
-
     }
 
     @Test
@@ -117,7 +112,6 @@ public class PromotionTest {
         requestPromotionVo.setProductList(productList);
         requestPromotionVo.setCouponIssueNo(promotion.getCouponIssueNo());
 
-        Calculation calculation = new CartCouponCalculation();
         PromotionService promotionService = new PromotionServiceImpl();
         PromotionController promotionController = new PromotionController(promotionService);
         promotionController.getCartCouponApplyData(requestPromotionVo);

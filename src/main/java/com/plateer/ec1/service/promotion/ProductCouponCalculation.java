@@ -1,6 +1,7 @@
 package com.plateer.ec1.service.promotion;
 
 import com.plateer.ec1.vo.promotion.*;
+import org.springframework.stereotype.Service;
 
 public class ProductCouponCalculation implements Calculation{
 

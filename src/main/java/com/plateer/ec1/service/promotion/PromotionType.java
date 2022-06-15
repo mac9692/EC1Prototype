@@ -2,30 +2,16 @@ package com.plateer.ec1.service.promotion;
 
 public enum PromotionType {
 
-    priceDiscount("priceDiscount") {
-        @Override
-        Calculation create() {
-            return new PriceDiscountCalculation();
-        }
-    },
-    productCoupon("productCoupon") {
-        @Override
-        Calculation create() {
-            return new ProductCouponCalculation();
-        }
-    },
-    cartCoupon("cartCoupon") {
-        @Override
-        Calculation create() {
-            return new CartCouponCalculation();
-        }
-    };
+    PRICEDISCOUNT(new PriceDiscountCalculation()),
+    PRODUCTCOUPON(new ProductCouponCalculation()),
+    CARTCOUPON(new CartCouponCalculation());
 
-    private final String type;
-    PromotionType(String type) {
-        this.type = type;
+    private Calculation calculation;
+    PromotionType(Calculation calculation) {
+        this.calculation = calculation;
     }
 
-    abstract Calculation create();
-
+    public Calculation getPromotionType() {
+        return calculation;
+    }
 }
