@@ -1,4 +1,5 @@
 package com.plateer.ec1.vo.promotion;
 
-public class ResponseBaseVo {
+public abstract class ResponseBaseVo {
+    private String memberNo;
 }
