@@ -22,7 +22,6 @@ public class PromotionServiceImpl implements PromotionService {
         return calculatorFactory.getPromotionCalculator(requestPromotionVo, PromotionType.PRICE_DISCOUNT.getCalculatorType());
     }
 
-
     @Override
     public ResponseBaseVo getProductCouponDiscountData(RequestPromotionVo requestPromotionVo) {
         log.info("PromotionServiceImpl - getProductCouponDiscountData");

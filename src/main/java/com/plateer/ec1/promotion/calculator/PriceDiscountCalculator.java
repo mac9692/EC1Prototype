@@ -1,6 +1,5 @@
 package com.plateer.ec1.promotion.calculator;
 
-import com.plateer.ec1.promotion.data.PromotionType;
 import com.plateer.ec1.promotion.vo.Promotion;
 import com.plateer.ec1.promotion.vo.request.RequestPromotionVo;
 import com.plateer.ec1.promotion.vo.response.ResponsePriceDcVo;
@@ -35,6 +34,7 @@ public class PriceDiscountCalculator implements Calculator {
         ResponsePriceDcVo responsePriceDcVo = new ResponsePriceDcVo();
         responsePriceDcVo.setMemberNo(requestPromotionVo.getMemberNo());
         responsePriceDcVo.setProductList(requestPromotionVo.getProductList());
+        log.info(String.valueOf(responsePriceDcVo));
         return responsePriceDcVo;
     }
 }

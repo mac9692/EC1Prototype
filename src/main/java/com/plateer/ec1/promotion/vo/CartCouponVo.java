@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CouponProductVo {
+public class CartCouponVo {
 
     private Promotion promotion;
     private List<Product> productList;

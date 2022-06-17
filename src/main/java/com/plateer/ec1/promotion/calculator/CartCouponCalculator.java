@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
-@Primary
 @RequiredArgsConstructor
 @Slf4j
 public class CartCouponCalculator implements Calculator {
