@@ -3,10 +3,12 @@ package com.plateer.ec1.payment.serviceimpl;
 import com.plateer.ec1.payment.service.PaymentService;
 import com.plateer.ec1.payment.vo.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@Primary
 public class Inicis implements PaymentService {
     @Override
     public void validateAuth(PayInfo payInfo) {
