@@ -18,6 +18,10 @@ public class PaymentServiceFactory {
         log.info("PaymentServiceFactory - PaymentServiceFactory");
     }
 
+    public Map<String, PaymentService> getPaymentTypeMap() {
+        return paymentTypeMap;
+    }
+
     public PaymentService getPaymentService(PaymentType paymentType) {
         log.info("PaymentServiceFactory - getPaymentService");
         if (paymentType == PaymentType.POINT) {

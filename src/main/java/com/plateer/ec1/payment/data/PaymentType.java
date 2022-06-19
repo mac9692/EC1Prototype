@@ -1,7 +1,8 @@
 package com.plateer.ec1.payment.data;
 
 public enum PaymentType {
-    INICIS("inicis"),POINT("point");
+    INICIS("inicis"),
+    POINT("point");
 
     private String paymentType;
 

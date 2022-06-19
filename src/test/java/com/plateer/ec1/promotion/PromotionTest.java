@@ -22,6 +22,7 @@ public class PromotionTest {
     @Autowired
     PromotionController promotionController;
 
+
     @Test
     @DisplayName("1. 가격할인금액 계산 테스트")
     void priceDiscountCalculationTest() {
