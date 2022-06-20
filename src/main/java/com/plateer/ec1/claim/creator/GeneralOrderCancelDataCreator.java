@@ -2,11 +2,10 @@ package com.plateer.ec1.claim.creator;
 
 import com.plateer.ec1.claim.model.ClaimModel;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 
-@Service
+@Component
 @Slf4j
 public class GeneralOrderCancelDataCreator extends ClaimDataCreator{
     @Override

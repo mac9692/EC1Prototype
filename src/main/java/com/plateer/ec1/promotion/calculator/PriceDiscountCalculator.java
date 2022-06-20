@@ -5,9 +5,9 @@ import com.plateer.ec1.promotion.vo.request.RequestPromotionVo;
 import com.plateer.ec1.promotion.vo.response.ResponsePriceDcVo;
 import com.plateer.ec1.promotion.vo.response.ResponseProductCouponVo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Slf4j
 public class PriceDiscountCalculator implements Calculator {
 

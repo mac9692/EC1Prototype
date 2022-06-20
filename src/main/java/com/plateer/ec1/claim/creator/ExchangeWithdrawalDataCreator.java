@@ -1,7 +1,9 @@
 package com.plateer.ec1.claim.creator;
 
 import com.plateer.ec1.claim.model.ClaimModel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExchangeWithdrawalDataCreator extends ClaimDataCreator{
     @Override
     public void updateOrderBenefitData(ClaimModel claimModel) {

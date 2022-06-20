@@ -28,8 +28,7 @@ public class OrderContextImpl implements OrderContext {
     public void execute(DataStrategy dataStrategy, AfterStrategy afterStrategy, OrderRequest orderRequest) {
         log.info("OrderContextImpl - execute");
         Long historyNo = orderHistoryService.insertOrderHistory(orderRequest);
-        Order order = new Order();
-        order = dataStrategy.create(orderRequest, new OrderProductView());
+        Order order = dataStrategy.create(orderRequest, new OrderProductView());
         insertOrderData(order);
         payService.approve(orderRequest.getPayInfo());
         amountValidation(orderRequest.getOrderNo());
@@ -44,5 +43,8 @@ public class OrderContextImpl implements OrderContext {
 
     private void insertOrderData(Order order) {
         log.info("OrderContextImpl - insertOrderData");
+        orderRepository.insertOrderBase(order);
+        orderRepository.insertOrderProduct(order);
+        orderRepository.insertOrderClaim(order);
     }
 }

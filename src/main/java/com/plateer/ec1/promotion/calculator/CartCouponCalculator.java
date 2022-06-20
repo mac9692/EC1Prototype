@@ -4,13 +4,10 @@ import com.plateer.ec1.promotion.vo.Promotion;
 import com.plateer.ec1.promotion.vo.request.RequestPromotionVo;
 import com.plateer.ec1.promotion.vo.response.ResponseCartCouponVo;
 import com.plateer.ec1.promotion.vo.response.ResponseProductCouponVo;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-@RequiredArgsConstructor
+@Component
 @Slf4j
 public class CartCouponCalculator implements Calculator {
 

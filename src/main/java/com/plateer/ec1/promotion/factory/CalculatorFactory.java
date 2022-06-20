@@ -4,12 +4,11 @@ import com.plateer.ec1.promotion.calculator.Calculator;
 import com.plateer.ec1.promotion.vo.request.RequestPromotionVo;
 import com.plateer.ec1.promotion.vo.response.ResponseBaseVo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 
-@Service
+@Component
 @Slf4j
 public class CalculatorFactory {
 

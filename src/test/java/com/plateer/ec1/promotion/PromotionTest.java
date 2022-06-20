@@ -1,18 +1,13 @@
 package com.plateer.ec1.promotion;
 
-import com.plateer.ec1.member.vo.Member;
-import com.plateer.ec1.product.vo.Product;
+import com.plateer.ec1.promotion.controller.CouponController;
+import com.plateer.ec1.promotion.controller.PointController;
 import com.plateer.ec1.promotion.controller.PromotionController;
-import com.plateer.ec1.promotion.vo.Promotion;
 import com.plateer.ec1.promotion.vo.request.RequestPromotionVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Slf4j
 @SpringBootTest
@@ -22,6 +17,11 @@ public class PromotionTest {
     @Autowired
     PromotionController promotionController;
 
+    @Autowired
+    CouponController couponController;
+
+    @Autowired
+    PointController pointController;
 
     @Test
     @DisplayName("1. 가격할인금액 계산 테스트")
@@ -48,6 +48,24 @@ public class PromotionTest {
         RequestPromotionVo requestPromotionVo = new RequestPromotionVo();
         promotionController.getCartCouponApplyData(requestPromotionVo);
         log.info("3. 장바구니쿠폰할인 계산 테스트 종료");
+    }
+
+    @Test
+    @DisplayName("4. 다운로드 가능 쿠폰 조회 테스트")
+    void downloadAvailableCouponTest() {
+        log.info("4. 다운로드 가능 쿠폰 조회 테스트 시작");
+        RequestPromotionVo requestPromotionVo = new RequestPromotionVo();
+        couponController.getDownloadCouponList(requestPromotionVo);
+        log.info("4. 다운로드 가능 쿠폰 조회 테스트 종료");
+    }
+
+    @Test
+    @DisplayName("5. 포인트 정보 조회 테스트")
+    void getPointInfoTest() {
+        log.info("5. 포인트 정보 조회 테스트 시작");
+        RequestPromotionVo requestPromotionVo = new RequestPromotionVo();
+        pointController.getPointInfo(requestPromotionVo);
+        log.info("5. 포인트 정보 조회 테스트 종료");
     }
 
 }

@@ -3,11 +3,11 @@ package com.plateer.ec1.payment.factory;
 import com.plateer.ec1.payment.data.PaymentType;
 import com.plateer.ec1.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Service
+@Component
 @Slf4j
 public class PaymentServiceFactory {
 

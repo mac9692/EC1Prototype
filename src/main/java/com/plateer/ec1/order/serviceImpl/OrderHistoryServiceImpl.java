@@ -22,6 +22,5 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 
     @Override
     public void updateOrderHistory(Long historyNo, Order order) {
-
     }
 }

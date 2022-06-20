@@ -7,9 +7,9 @@ import com.plateer.ec1.claim.helper.MonitoringLogHelper;
 import com.plateer.ec1.claim.validate.ClaimValidator;
 import com.plateer.ec1.claim.vo.Claim;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Slf4j
 public class CompleteProcessor extends ClaimProcessor{
 
