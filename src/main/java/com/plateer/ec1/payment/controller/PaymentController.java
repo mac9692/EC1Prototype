@@ -17,19 +17,19 @@ public class PaymentController {
 
     @RequestMapping(path = "approve")
     public ApproveResponseVo approve(PayInfo payInfo) {
-        log.info("PaymentController - approve");
+        log.info("결제 요청 승인 시작");
         return payService.approve(payInfo);
     }
 
     @RequestMapping(path = "cancel")
     public void cancel(CancelRequestVo cancelRequestVo) {
-        log.info("PaymentController - cancel");
+        log.info("결제 취소 시작");
         payService.cancel(cancelRequestVo);
     }
 
     @RequestMapping(path = "netcancel")
     public void netCancel(CancelRequestVo cancelRequestVo) {
-        log.info("PaymentController - netCancel");
+        log.info("결제 망취소 시작");
         payService.netCancel(cancelRequestVo);
     }
 

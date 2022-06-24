@@ -26,19 +26,19 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void order(OrderRequest orderRequest) {
-        log.info("OrderServiceImpl - order");
+        log.info("주문하기 서비스 실행");
         orderContext.execute(getDataStrategy(orderRequest), getAfterStrategy(orderRequest), orderRequest);
     }
 
     @Override
     public DataStrategy getDataStrategy(OrderRequest orderRequest) {
-        log.info("OrderServiceImpl - getDataStrategy");
-        return dataStrategyFactory.getDataStrategy(orderRequest.getOrderType().getOrderType());
+        log.info("주문 전략 호출 시작");
+        return dataStrategyFactory.getDataStrategy(orderRequest.getOrderType());
     }
 
     @Override
     public AfterStrategy getAfterStrategy(OrderRequest orderRequest) {
-        log.info("OrderServiceImpl - getAfterStrategy");
-        return afterStrategyFactory.getAfterStrategy(orderRequest.getSystemType().getSystemType());
+        log.info("후처리 전략 호출 시작");
+        return afterStrategyFactory.getAfterStrategy(orderRequest.getSystemType());
     }
 }

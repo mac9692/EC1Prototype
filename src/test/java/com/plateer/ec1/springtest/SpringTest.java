@@ -1,7 +1,8 @@
 package com.plateer.ec1.springtest;
 
 import com.plateer.ec1.claim.creator.ClaimDataCreator;
-import com.plateer.ec1.claim.data.ClaimType;
+import com.plateer.ec1.claim.data.CreatorType;
+import com.plateer.ec1.claim.data.ProcessorType;
 import com.plateer.ec1.claim.factory.ClaimDataCreatorFactory;
 import com.plateer.ec1.claim.factory.ClaimProcessorFactory;
 import com.plateer.ec1.claim.processor.ClaimProcessor;
@@ -45,7 +46,7 @@ public class SpringTest {
         PaymentService paymentService1 = paymentServiceFactory.getPaymentService(payInfo.getPaymentType());
         PaymentService paymentService2 = paymentServiceFactory.getPaymentService(payInfo.getPaymentType());
 
-        log.info(String.valueOf(paymentServiceFactory.getPaymentTypeMap()));
+
         log.info(String.valueOf(paymentService1));
         log.info(String.valueOf(paymentService2));
         //paymentService1 = paymentService2
@@ -54,11 +55,12 @@ public class SpringTest {
 
         log.info("클레임 팩토리 테스트 시작");
         Claim claim = new Claim();
-        claim.setClaimType(ClaimType.GCC);
-        ClaimProcessor claimProcessor1 = claimProcessorFactory.getClaimProcessor(claim.getClaimType().getClaimProcessorType());
-        ClaimProcessor claimProcessor2 = claimProcessorFactory.getClaimProcessor(claim.getClaimType().getClaimProcessorType());
-        ClaimDataCreator claimDataCreator1 = claimDataCreatorFactory.getClaimDataCreator(claim.getClaimType().getClaimDataCreatorType());
-        ClaimDataCreator claimDataCreator2 = claimDataCreatorFactory.getClaimDataCreator(claim.getClaimType().getClaimDataCreatorType());
+        claim.setProcessorType(ProcessorType.ACCEPT_WITHDRAWAL);
+        claim.setCreatorType(CreatorType.ECOUPONCANCELACCEPT);
+        ClaimProcessor claimProcessor1 = claimProcessorFactory.getClaimProcessor(claim.getProcessorType());
+        ClaimProcessor claimProcessor2 = claimProcessorFactory.getClaimProcessor(claim.getProcessorType());
+        ClaimDataCreator claimDataCreator1 = claimDataCreatorFactory.getClaimDataCreator(claim.getCreatorType());
+        ClaimDataCreator claimDataCreator2 = claimDataCreatorFactory.getClaimDataCreator(claim.getCreatorType());
         log.info(String.valueOf(claimProcessor1));
         log.info(String.valueOf(claimProcessor2));
         log.info(String.valueOf(claimDataCreator1));

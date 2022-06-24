@@ -18,7 +18,7 @@ public class OrderController {
 
     @RequestMapping(path = "order")
     public void order(OrderRequest orderRequest) {
-        log.info("OrderController - order");
+        log.info("주문하기 시작");
         orderService.order(orderRequest);
     }
 }

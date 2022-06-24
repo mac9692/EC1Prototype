@@ -20,37 +20,37 @@ public class CouponController {
 
     @RequestMapping(path = "getDownloadCouponList")
     public List<Promotion> getDownloadCouponList(RequestPromotionVo requestPromotionVo) {
-        log.info("CouponController - getDownloadCouponList");
+        log.info("다운로드 가능한 쿠폰 리스트 조회 시작");
         return couponService.getDownloadCouponList(requestPromotionVo.getMemberNo());
     }
 
     @RequestMapping(path = "checkAvailableDownloadCoupon")
     public boolean checkAvailableDownloadCoupon(RequestPromotionVo requestPromotionVo) {
-        log.info("CouponController - checkAvailableDownloadCoupon");
+        log.info("다운로드 가능한 쿠폰 체크 시작");
         return couponService.checkAvailableDownloadCoupon(requestPromotionVo.getMemberNo(), requestPromotionVo.getPromotion());
     }
 
     @RequestMapping("downloadCoupon")
     public Promotion downloadCoupon(RequestPromotionVo requestPromotionVo) {
-        log.info("CouponController - downloadCoupon");
+        log.info("쿠폰 다운로드 시작");
         return couponService.downloadCoupon(requestPromotionVo.getMemberNo(), requestPromotionVo.getPromotion());
     }
 
     @RequestMapping(path = "useCoupon")
     public Long useCoupon() {
-        log.info("CouponController - useCoupon");
+        log.info("쿠폰 사용 시작");
         return couponService.useCoupon();
     }
 
     @RequestMapping(path = "cancelCoupon")
     public Long cancelCoupon() {
-        log.info("CouponController - cancelCoupon");
+        log.info("쿠폰 사용 취소 시작");
         return couponService.cancelCoupon();
     }
 
     @RequestMapping(path = "verifyCoupon")
     public boolean verifyCoupon() {
-        log.info("CouponController - verifyCoupon");
+        log.info("쿠폰 검증");
         return couponService.verifyCoupon();
     }
 }

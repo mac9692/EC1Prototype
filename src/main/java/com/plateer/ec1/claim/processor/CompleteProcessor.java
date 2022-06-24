@@ -1,32 +1,43 @@
 package com.plateer.ec1.claim.processor;
 
 import com.plateer.ec1.claim.creator.ClaimDataCreator;
+import com.plateer.ec1.claim.data.ProcessorType;
 import com.plateer.ec1.claim.factory.ClaimDataCreatorFactory;
 import com.plateer.ec1.claim.helper.IFCallHelper;
 import com.plateer.ec1.claim.helper.MonitoringLogHelper;
+import com.plateer.ec1.claim.model.ClaimModel;
 import com.plateer.ec1.claim.validate.ClaimValidator;
 import com.plateer.ec1.claim.vo.Claim;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class CompleteProcessor extends ClaimProcessor{
+@RequiredArgsConstructor
+public class CompleteProcessor implements ClaimProcessor{
 
-    private final IFCallHelper ifCallHelper;
     private final ClaimDataCreatorFactory claimDataCreatorFactory;
+    private final ClaimValidator claimValidator;
+    private final MonitoringLogHelper monitoringLogHelper;
+    private final IFCallHelper ifCallHelper;
 
-    public CompleteProcessor(ClaimValidator claimValidator, ClaimDataCreator claimDataCreator, MonitoringLogHelper monitoringLogHelper, IFCallHelper ifCallHelper, ClaimDataCreatorFactory claimDataCreatorFactory) {
-        super(claimValidator, claimDataCreator, monitoringLogHelper);
-        this.ifCallHelper = ifCallHelper;
-        this.claimDataCreatorFactory = claimDataCreatorFactory;
+    @Override
+    public ProcessorType getType() {
+        return ProcessorType.COMPLETE;
     }
 
     @Override
     public void doProcess(Claim claim) {
-        log.info("CompleteProcessor - doProcess");
-        ClaimDataCreator claimDataCreator = claimDataCreatorFactory.getClaimDataCreator(claim.getClaimType().getClaimDataCreatorType());
-        ifCallHelper.callPaymentIF(claim);
+        log.info("취소 완료 프로세스 시작");
+        monitoringLogHelper.insertMonitoringLog(claim);
+        claimValidator.isValidStatus(claim);
+        ClaimDataCreator claimDataCreator = claimDataCreatorFactory.getClaimDataCreator(claim.getCreatorType());
+        claimDataCreator.updateOrderClaim(new ClaimModel());
         claimDataCreator.getInsertClaimData(claim);
+        claimValidator.isValidAmount(claim);
+        ifCallHelper.callRestoreCoupon(claim);
+        ifCallHelper.callPaymentIF(claim);
+        monitoringLogHelper.updateMonitoringLog(1L, "abc");
     }
 }

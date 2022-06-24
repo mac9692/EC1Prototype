@@ -17,22 +17,21 @@ public class PayServiceImpl implements PayService {
 
     @Override
     public ApproveResponseVo approve(PayInfo payInfo) {
-        log.info("PayServiceImpl - approve");
+        log.info("결제 승인 서비스 호출");
         PaymentService paymentService = paymentServiceFactory.getPaymentService(payInfo.getPaymentType());
-        paymentService.validateAuth(payInfo);
         return paymentService.approvePay(payInfo);
     }
 
     @Override
     public void cancel(CancelRequestVo cancelRequestVo) {
-        log.info("PayServiceImpl - cancel");
+        log.info("결제 취소 서비스 호출");
         PaymentService paymentService = paymentServiceFactory.getPaymentService(cancelRequestVo.getPaymentType());
         paymentService.cancelPay(cancelRequestVo);
     }
 
     @Override
     public void netCancel(CancelRequestVo cancelRequestVo) {
-        log.info("PayServiceImpl - netCancel");
+        log.info("결제 망취소 서비스 호출");
         PaymentService paymentService = paymentServiceFactory.getPaymentService(cancelRequestVo.getPaymentType());
         paymentService.netCancel(cancelRequestVo);
     }

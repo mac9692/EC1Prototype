@@ -1,45 +1,57 @@
 package com.plateer.ec1.claim.creator;
 
+import com.plateer.ec1.claim.data.CreatorType;
 import com.plateer.ec1.claim.model.ClaimModel;
+import com.plateer.ec1.claim.vo.Claim;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-@Primary
-public class ECouponCancelAcceptDataCreator extends ClaimDataCreator {
-
+public class ECouponCancelAcceptDataCreator implements ClaimDataCreator{
     @Override
-    public void updateOrderBenefitData(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - updateOrderBenefitData");
+    public CreatorType getType() {
+        return CreatorType.ECOUPONCANCELACCEPT;
     }
 
     @Override
-    public ClaimModel insertOrderBenefitData(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - insertOrderBenefitData");
+    public ClaimModel getInsertClaimData(Claim claim) {
+        return null;
+    }
+
+    @Override
+    public ClaimModel getUpdateClaimData(Claim claim) {
+        return null;
+    }
+
+    @Override
+    public void updateOrderBenefitData(Claim claim) {
+
+    }
+
+    @Override
+    public ClaimModel insertOrderBenefitRelation(ClaimModel claimModel) {
         return null;
     }
 
     @Override
     public void updateOrderCost(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - updateOrderCost");
+
     }
 
     @Override
     public ClaimModel insertOrderCost(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - insertOrderCost");
         return null;
     }
 
     @Override
     public void updateOrderClaim(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - updateOrderClaim");
+
     }
 
     @Override
     public ClaimModel insertOrderClaim(ClaimModel claimModel) {
-        log.info("ECouponCancelAcceptDataCreator - insertOrderClaim");
         return null;
     }
+
 }

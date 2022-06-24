@@ -1,5 +1,6 @@
 package com.plateer.ec1.order.strategy.after;
 
+import com.plateer.ec1.order.data.AfterStrategyType;
 import com.plateer.ec1.order.vo.Order;
 import com.plateer.ec1.order.vo.OrderRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class FoAfterStrategy implements AfterStrategy {
     @Override
+    public AfterStrategyType getType() {
+        return AfterStrategyType.FO;
+    }
+
+    @Override
     public void call(OrderRequest orderRequest, Order order) {
-        log.info("FoAfterStrategy - call");
+        log.info("Fo후처리 시작");
+        log.info("Fo후처리 종료");
     }
 }

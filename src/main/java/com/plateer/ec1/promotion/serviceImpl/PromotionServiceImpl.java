@@ -18,19 +18,19 @@ public class PromotionServiceImpl implements PromotionService {
 
     @Override
     public ResponseBaseVo getPriceDiscountData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionServiceImpl - getPriceDiscountData");
-        return calculatorFactory.getPromotionCalculator(requestPromotionVo, PromotionType.PRICE_DISCOUNT.getCalculatorType());
+        log.info("가격 할인 서비스 호출");
+        return calculatorFactory.getPromotionCalculator(PromotionType.PRICE_DISCOUNT).getCalculationData(requestPromotionVo);
     }
 
     @Override
     public ResponseBaseVo getProductCouponDiscountData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionServiceImpl - getProductCouponDiscountData");
-        return calculatorFactory.getPromotionCalculator(requestPromotionVo, PromotionType.PRODUCT_COUPON.getCalculatorType());
+        log.info("상품쿠폰 할인 서비스 호출");
+        return calculatorFactory.getPromotionCalculator(PromotionType.PRODUCT_COUPON).getCalculationData(requestPromotionVo);
     }
 
     @Override
     public ResponseBaseVo getCartCouponDiscountData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionServiceImpl - getCartCouponDiscountData");
-        return calculatorFactory.getPromotionCalculator(requestPromotionVo, PromotionType.CART_COUPON.getCalculatorType());
+        log.info("장바구니 쿠폰 할인 서비스 호출");
+        return calculatorFactory.getPromotionCalculator(PromotionType.CART_COUPON).getCalculationData(requestPromotionVo);
     }
 }

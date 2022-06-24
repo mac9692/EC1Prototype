@@ -1,19 +1,9 @@
 package com.plateer.ec1.promotion.data;
 
 public enum PromotionType {
-    PRICE_DISCOUNT("priceDiscountCalculator"),
-    PRODUCT_COUPON("productCouponCalculator"),
-    CART_COUPON("cartCouponCalculator"),
-    ;
+    PRICE_DISCOUNT,
+    PRODUCT_COUPON,
+    CART_COUPON;
 
-    private String calculatorType;
-
-    PromotionType(String calculatorType) {
-        this.calculatorType = calculatorType;
-    }
-
-    public String getCalculatorType() {
-        return calculatorType;
-    }
 
 }

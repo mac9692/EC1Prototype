@@ -18,25 +18,25 @@ public class PointController {
 
     @RequestMapping(path = "getPointInfo")
     public PointVo getPointInfo(RequestPromotionVo requestPromotionVo) {
-        log.info("PointController - getPointInfo");
+        log.info("포인트 정보 조회 시작");
         return pointService.getPointInfo(requestPromotionVo.getClnNo());
     }
 
     @RequestMapping(path = "savePoint")
     public PointVo savePoint(RequestPromotionVo requestPromotionVo) {
-        log.info("PointController - savePoint");
+        log.info("포인트 저장 시작");
         return pointService.savePoint(requestPromotionVo.getClnNo(), requestPromotionVo.getPointAmt());
     }
 
     @RequestMapping(path = "usePoint")
     public PointVo usePoint(RequestPromotionVo requestPromotionVo) {
-        log.info("PointController - usePoint");
+        log.info("포인트 사용 시작");
         return pointService.usePoint(requestPromotionVo.getClnNo(), requestPromotionVo.getPointAmt());
     }
 
     @RequestMapping(path = "cancelPoint")
     public PointVo cancelPoint(RequestPromotionVo requestPromotionVo) {
-        log.info("PointController - cancelPoint");
+        log.info("포인트 사용 취소 시작");
         return pointService.cancelPoint(requestPromotionVo.getClnNo(), requestPromotionVo.getPointAmt());
     }
 }

@@ -1,8 +1,8 @@
 package com.plateer.ec1.order;
 
 import com.plateer.ec1.order.controller.OrderController;
-import com.plateer.ec1.order.data.OrderType;
-import com.plateer.ec1.order.data.SystemType;
+import com.plateer.ec1.order.data.DataStrategyType;
+import com.plateer.ec1.order.data.AfterStrategyType;
 import com.plateer.ec1.order.vo.OrderRequest;
 import com.plateer.ec1.payment.data.PaymentType;
 import com.plateer.ec1.payment.vo.PayInfo;
@@ -28,8 +28,8 @@ public class OrderTest {
         OrderRequest orderRequest = new OrderRequest();
         PayInfo payInfo = new PayInfo();
         payInfo.setPaymentType(PaymentType.POINT);
-        orderRequest.setOrderType(OrderType.ECOUPON);
-        orderRequest.setSystemType(SystemType.BO);
+        orderRequest.setOrderType(DataStrategyType.ECOUPON);
+        orderRequest.setSystemType(AfterStrategyType.BO);
         orderRequest.setPayInfo(payInfo);
         orderController.order(orderRequest);
     }
@@ -40,8 +40,8 @@ public class OrderTest {
         OrderRequest orderRequest = new OrderRequest();
         PayInfo payInfo = new PayInfo();
         payInfo.setPaymentType(PaymentType.INICIS);
-        orderRequest.setOrderType(OrderType.GENERAL);
-        orderRequest.setSystemType(SystemType.FO);
+        orderRequest.setOrderType(DataStrategyType.GENERAL);
+        orderRequest.setSystemType(AfterStrategyType.FO);
         orderRequest.setPayInfo(payInfo);
         orderController.order(orderRequest);
     }

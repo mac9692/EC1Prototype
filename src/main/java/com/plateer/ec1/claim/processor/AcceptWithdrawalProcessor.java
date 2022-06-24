@@ -1,28 +1,38 @@
 package com.plateer.ec1.claim.processor;
 
 import com.plateer.ec1.claim.creator.ClaimDataCreator;
+import com.plateer.ec1.claim.data.ProcessorType;
 import com.plateer.ec1.claim.factory.ClaimDataCreatorFactory;
 import com.plateer.ec1.claim.helper.MonitoringLogHelper;
 import com.plateer.ec1.claim.validate.ClaimValidator;
 import com.plateer.ec1.claim.vo.Claim;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Slf4j
-public class AcceptWithdrawalProcessor extends ClaimProcessor{
+@RequiredArgsConstructor
+public class AcceptWithdrawalProcessor implements ClaimProcessor{
 
-    private ClaimDataCreatorFactory claimDataCreatorFactory;
+    private final ClaimDataCreatorFactory claimDataCreatorFactory;
+    private final ClaimValidator claimValidator;
+    private final MonitoringLogHelper monitoringLogHelper;
 
-    public AcceptWithdrawalProcessor(ClaimValidator claimValidator, ClaimDataCreator claimDataCreator, MonitoringLogHelper monitoringLogHelper, ClaimDataCreatorFactory claimDataCreatorFactory) {
-        super(claimValidator, claimDataCreator, monitoringLogHelper);
-        this.claimDataCreatorFactory = claimDataCreatorFactory;
+    @Override
+    public ProcessorType getType() {
+        return ProcessorType.ACCEPT_WITHDRAWAL;
     }
 
     @Override
+    @Transactional
     public void doProcess(Claim claim) {
-        log.info("AcceptWithdrawalProcessor - doProcess");
-        ClaimDataCreator claimDataCreator = claimDataCreatorFactory.getClaimDataCreator(claim.getClaimType().getClaimDataCreatorType());
+        log.info("접수 OR 철회 프로세스 시작");
+        log.info("클레임 번호 채번");
+        monitoringLogHelper.insertMonitoringLog(claim);
+        claimValidator.isValidStatus(claim);
+        ClaimDataCreator claimDataCreator = claimDataCreatorFactory.getClaimDataCreator(claim.getCreatorType());
         claimDataCreator.getInsertClaimData(claim);
     }
 }

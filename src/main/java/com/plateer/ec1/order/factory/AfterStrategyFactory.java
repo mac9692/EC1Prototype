@@ -1,26 +1,34 @@
 package com.plateer.ec1.order.factory;
 
+import com.plateer.ec1.order.data.AfterStrategyType;
 import com.plateer.ec1.order.strategy.after.AfterStrategy;
 import com.plateer.ec1.order.strategy.data.DataStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @Component
 public class AfterStrategyFactory {
 
-    private final Map<String, AfterStrategy> afterStrategyTypeMap;
+    private Map<AfterStrategyType, AfterStrategy> afterStrategyTypeMap = new LinkedHashMap<>();
+    private final List<AfterStrategy> afterStrategyList;
 
-    public AfterStrategyFactory(Map<String, AfterStrategy> afterStrategyTypeMap) {
-        this.afterStrategyTypeMap = afterStrategyTypeMap;
-        log.info("AfterStrategyFactory - AfterStrategyFactory");
+    public AfterStrategyFactory(List<AfterStrategy> afterStrategyList) {
+        this.afterStrategyList = afterStrategyList;
     }
 
-    public AfterStrategy getAfterStrategy(String afterStrategyType) {
-        AfterStrategy afterStrategy = afterStrategyTypeMap.get(afterStrategyType);
-        log.info("AfterStrategyFactory - getAfterStrategy");
-        return afterStrategy;
+    @PostConstruct
+    public void init() {
+        afterStrategyList.forEach(c -> afterStrategyTypeMap.put(c.getType(),c));
+    }
+
+    public AfterStrategy getAfterStrategy(AfterStrategyType afterStrategyType) {
+        log.info("후처리 서비스에 맞는 전략 호출");
+        return afterStrategyTypeMap.get(afterStrategyType);
     }
 }

@@ -15,25 +15,29 @@ public class PointServiceImpl implements PointService {
 
     @Override
     public PointVo getPointInfo(String clnNo) {
-        log.info("PointServiceImpl - getPointInfo");
+        log.info("포인트 정보 GET 서비스 시작");
+        log.info("포인트 정보 GET 서비스 종료");
         return null;
     }
 
     @Override
     public PointVo savePoint(String clnNo, int pointAmt) {
-        log.info("PointServiceImpl - savePoint");
+        log.info("포인트 저장 서비스 시작");
+        log.info("포인트 저장 서비스 종료");
         return null;
     }
 
     @Override
     public PointVo usePoint(String clnNo, int pointAmt) {
-        log.info("PointServiceImpl - usePoint");
+        log.info("포인트 사용 서비스 시작");
+        log.info("포인트 사용 서비스 종료");
         return null;
     }
 
     @Override
     public PointVo cancelPoint(String clnNo, int pointAmt) {
-        log.info("PointServiceImpl - cancelPoint");
+        log.info("포인트 사용취소 서비스 시작");
+        log.info("포인트 사용취소 서비스 종료");
         return null;
     }
 }

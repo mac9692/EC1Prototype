@@ -17,10 +17,13 @@ public class OrderHistoryServiceImpl implements OrderHistoryService {
 
     @Override
     public Long insertOrderHistory(OrderRequest orderRequest) {
+        log.info("주문 모니터링 로그 생성 시작");
+        log.info("주문 모니터링 로그 생성 종료");
         return null;
     }
 
     @Override
     public void updateOrderHistory(Long historyNo, Order order) {
+        log.info("주문 모니터링 결과 업데이트");
     }
 }

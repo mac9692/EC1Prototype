@@ -51,12 +51,12 @@ public class PromotionTest {
     }
 
     @Test
-    @DisplayName("4. 다운로드 가능 쿠폰 조회 테스트")
+    @DisplayName("4. 쿠폰 다운로드 테스트")
     void downloadAvailableCouponTest() {
-        log.info("4. 다운로드 가능 쿠폰 조회 테스트 시작");
+        log.info("4. 쿠폰 다운로드 테스트 시작");
         RequestPromotionVo requestPromotionVo = new RequestPromotionVo();
-        couponController.getDownloadCouponList(requestPromotionVo);
-        log.info("4. 다운로드 가능 쿠폰 조회 테스트 종료");
+        couponController.downloadCoupon(requestPromotionVo);
+        log.info("4. 쿠폰 다운로드 테스트 종료");
     }
 
     @Test

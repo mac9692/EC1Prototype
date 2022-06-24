@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class MonitoringLogHelper {
 
     public Long insertMonitoringLog(Claim claim) {
-        log.info("MonitoringLogHelper - insertMonitoringLog");
+        log.info("모니터링 로그 INSERT");
         return null;
     }
 
     public void updateMonitoringLog(Long logKey, String logContents) {
-        log.info("MonitoringLogHelper - updateMonitoringLog");
+        log.info("모니터링 로그 UPDATE");
     }
 }

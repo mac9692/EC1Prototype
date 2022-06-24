@@ -11,14 +11,14 @@ public class OrderRepositoryImpl implements OrderRepository {
 
 
     public void insertOrderBase(Order order) {
-        log.info("OrderRepositoryImpl - insertOrderBase");
+        log.info("주문 베이스 데이터 삽입");
     }
 
     public void insertOrderProduct(Order order) {
-        log.info("OrderRepositoryImpl - insertOrderProduct");
+        log.info("주문상품 베이스 데이터 삽입");
     }
 
     public void insertOrderClaim(Order order) {
-        log.info("OrderRepositoryImpl - insertOrderClaim");
+        log.info("주문 클레임 데이터 삽입");
     }
 }

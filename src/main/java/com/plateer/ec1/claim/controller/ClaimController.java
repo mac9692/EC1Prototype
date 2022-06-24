@@ -18,7 +18,7 @@ public class ClaimController {
 
     @PostMapping(path = "claim")
     public void claim(Claim claim) {
-        log.info("ClaimController - claim");
+        log.info("클레임 시작");
         claimService.claim(claim);
     }
 }

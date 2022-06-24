@@ -5,32 +5,29 @@ import com.plateer.ec1.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
 @Slf4j
 public class PaymentServiceFactory {
 
-    private final Map<String, PaymentService> paymentTypeMap;
+    private Map<PaymentType, PaymentService> paymentTypeMap = new LinkedHashMap<>();
+    private final List<PaymentService> paymentServiceList;
 
-    public PaymentServiceFactory(Map<String, PaymentService> paymentTypeMap) {
-        this.paymentTypeMap = paymentTypeMap;
-        log.info("PaymentServiceFactory - PaymentServiceFactory");
+    public PaymentServiceFactory(List<PaymentService> paymentServiceList) {
+        this.paymentServiceList = paymentServiceList;
     }
 
-    public Map<String, PaymentService> getPaymentTypeMap() {
-        return paymentTypeMap;
+    @PostConstruct
+    public void init() {
+        paymentServiceList.forEach(c -> paymentTypeMap.put(c.getType(),c));
     }
-
     public PaymentService getPaymentService(PaymentType paymentType) {
-        log.info("PaymentServiceFactory - getPaymentService");
-        if (paymentType == PaymentType.POINT) {
-            return paymentTypeMap.get(PaymentType.POINT.getPaymentType());
-        } else if (paymentType == PaymentType.INICIS) {
-            return paymentTypeMap.get(PaymentType.INICIS.getPaymentType());
-        } else {
-            return null;
-        }
+        log.info("결제 서비스 타입에 맞는 서비스 호출");
+        return paymentTypeMap.get(paymentType);
     }
 
 }

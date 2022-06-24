@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 public class ClaimValidator {
 
     public void isValidStatus(Claim claim) {
-        log.info("ClaimValidator - isValidStatus");
+        log.info("검증 시작 : 상태 검증");
     }
 
     public void isValidAmount(Claim claim) {
-        log.info("ClaimValidator - isValidAmount");
+        log.info("검증 시작 : 금액 검증");
     }
 
     public void verifyAmount(Claim claim) {
-        log.info("ClaimValidator - verifyAmount");
+        log.info("검증 시작 : 재고 검증");
     }
 }

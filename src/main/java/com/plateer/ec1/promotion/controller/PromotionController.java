@@ -18,18 +18,18 @@ public class PromotionController {
 
     @RequestMapping(value = "priceDiscount")
     public ResponseBaseVo getPriceDiscountApplyData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionController - getPriceDiscountApplyData");
+        log.info("가격 할인 적용 시작");
         return promotionService.getPriceDiscountData(requestPromotionVo);
     }
 
     @RequestMapping(value = "productCoupon")
     public ResponseBaseVo getProductCouponApplyData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionController - getProductCouponApplyData");
+        log.info("상품쿠폰 적용 시작");
         return promotionService.getProductCouponDiscountData(requestPromotionVo);
     }
     @RequestMapping(value = "cartCoupon")
     public ResponseBaseVo getCartCouponApplyData(RequestPromotionVo requestPromotionVo) {
-        log.info("PromotionController - getCartCouponApplyData");
+        log.info("장바구니 쿠폰 적용 시작");
         return promotionService.getCartCouponDiscountData(requestPromotionVo);
     }
 

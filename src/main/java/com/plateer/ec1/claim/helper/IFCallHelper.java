@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class IFCallHelper {
 
     public void callRestoreCoupon(Claim claim) {
-        log.info("IFCallHelper - callRestoreCoupon");
+        log.info("쿠폰 복원 API 호출");
     }
 
     public void callPaymentIF(Claim claim) {
-        log.info("IFCallHelper - callPaymentIF");
+        log.info("결제 인터페이스 호출");
     }
 }
